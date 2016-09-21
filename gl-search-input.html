@@ -6,6 +6,10 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-form/iron-form.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../gl-styles/gl-color.html">
+
 
 
 
@@ -18,42 +22,71 @@
 
 <dom-module id="gl-search-input">
     <template>
-    <style include="iron-flex iron-flex-factors">
+    <style include="iron-flex iron-flex-alignment iron-flex-factors gl-color">
       .width{
           width:100%;
       }
       .text{
-          border: 1px solid #000;
-          font-size:18px;
-          padding-top:20px;
-          height: 25px;
+          /*border: 1px solid #000;*/
+          font-size:16px;
+          padding-top:31px;
+          /*height: 25px;*/
+      }
+      .button {
+          margin:15px;
       }
     </style>
-    <form is="iron-form" id="searchInput" method="get" >
+    
      <div class="layout vertical">
+         <form is="iron-form" id="searchInput" method="get" >
          <div class="layout horizontal">
-             <div>
-                 <div class="text">ค้นหา</div> 
+             <div class="flex">
+                 <div class="text">ค้นหา :</div> 
              </div>
-            <div>
-                <paper-input label="ค้นหา" name="name" value="{{search}}" class="width">
+            <div class="flex-3">
+                <paper-input label="ค้นหา" name="searchName" value="{{search}}" class="width">
                     <iron-icon icon="search" prefix></iron-icon>
                 </paper-input>
             </div>
          </div>
-      
-        <div >
-          <paper-dropdown-menu label="ค้นหาตาม" name="searchType" class="width">
-            <paper-listbox class="dropdown-content" >
-              <template is="dom-repeat" items={{searchType}} as=item index-as=index>
-                <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
-              </template>
-           </paper-listbox>
-         </paper-dropdown-menu>
-        </div>
+         <div class="layout horizontal">
+             <div class="flex">
+                 <div class="text">ค้นหาตาม :</div> 
+             </div>
+            <div class="flex-3">
+                <paper-dropdown-menu label="ค้นหาตาม" name="searchType" class="width">
+                    <paper-listbox class="dropdown-content" >
+                        <template is="dom-repeat" items={{searchType}} as=item index-as=index>
+                            <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
+                        </template>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+            </div>
+         </div>
+         <div class="layout horizontal">
+             <div class="flex">
+                 <div class="text">เริ่มจากวันที่ :</div> 
+             </div>
+            <div class="flex-3">
+                <vaadin-date-picker name="searchStart"></vaadin-date-picker>
+            </div>
+         </div>
+         <div class="layout horizontal">
+             <div class="flex">
+                 <div class="text">จนถึงวันที่ :</div> 
+             </div>
+            <div class="flex-3">
+                <vaadin-date-picker name="searchEnd"></vaadin-date-picker>
+            </div>
+         </div>
+      </form>
+     
      </div>
-    </form>
-    <button type="button" on-tap="_searchKey">แสดงรายงาน</button>
+   
+     <div class="horizontal center-justified layout button">
+           <paper-button raised on-tap="_searchKey" class="gl-btn-info">ค้นหา</paper-button>
+      </div>
+   
 
 
     </template>

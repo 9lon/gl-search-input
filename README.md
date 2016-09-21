@@ -28,7 +28,6 @@ searchData
 ```
 true = ใช้ , false = ไม่ใช่งาน
 
-esult 
 
 ## วิธีการใช้งาน
 

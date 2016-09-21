@@ -1,6 +1,7 @@
 {
   "name": "gl-search-input",
   "main": "gl-search-input.html",
+  "version": "0.0.1",
   "authors": [
     "tonsai-j <tonsai.j@nexts-corp.com>"
   ],

@@ -39,46 +39,62 @@
     
      <div class="layout vertical">
          <form is="iron-form" id="searchInput" method="get" >
-         <div class="layout horizontal">
-             <div class="flex">
-                 <div class="text">ค้นหา :</div> 
-             </div>
-            <div class="flex-3">
-                <paper-input label="ค้นหา" name="searchName" value="{{search}}" class="width">
-                    <iron-icon icon="search" prefix></iron-icon>
-                </paper-input>
+            <template is="dom-if" if={{searchInput}}>
+                <div class="layout horizontal">
+                    <div class="flex">
+                        <div class="text">ค้นหา :</div> 
+                    </div>
+                    <div class="flex-3">
+                        <paper-input label="ค้นหา" name="searchName" value="{{search}}" class="width">
+                            <!--<iron-icon icon="search" suffix></iron-icon>-->
+                        </paper-input>
+                    </div>
+                </div>
+            </template>
+            
+            <template is="dom-if" if={{searchInputType}}>
+                <div class="layout horizontal">
+                    <div class="flex">
+                        <div class="text">ค้นหาตาม :</div> 
+                    </div>
+                    <div class="flex-3">
+                        <paper-dropdown-menu label="ค้นหาตาม" name="searchType" class="width">
+                            <paper-listbox class="dropdown-content" >
+                                <template is="dom-repeat" items={{searchType}} as=item index-as=index>
+                                    <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
+                                </template>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                    </div>
+                </div>
+            </template>
+            
+         
+         <template is="dom-if" if={{searchDataStart}}>
+             <div class="layout horizontal">
+                <div class="flex">
+                    <div class="text">เริ่มจากวันที่ :</div> 
+                </div>
+                <div class="flex-3">
+                    <vaadin-date-picker name="searchStart"></vaadin-date-picker>
+                </div>
             </div>
-         </div>
-         <div class="layout horizontal">
-             <div class="flex">
-                 <div class="text">ค้นหาตาม :</div> 
-             </div>
-            <div class="flex-3">
-                <paper-dropdown-menu label="ค้นหาตาม" name="searchType" class="width">
-                    <paper-listbox class="dropdown-content" >
-                        <template is="dom-repeat" items={{searchType}} as=item index-as=index>
-                            <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
-                        </template>
-                    </paper-listbox>
-                </paper-dropdown-menu>
+         </template>
+         
+         <template is="dom-if" if={{searchDataEnd}}>
+             <div class="layout horizontal">
+                <div class="flex">
+                    <div class="text">จนถึงวันที่ :</div> 
+                </div>
+                <div class="flex-3">
+                    <vaadin-date-picker name="searchEnd"></vaadin-date-picker>
+                </div>
             </div>
-         </div>
-         <div class="layout horizontal">
-             <div class="flex">
-                 <div class="text">เริ่มจากวันที่ :</div> 
-             </div>
-            <div class="flex-3">
-                <vaadin-date-picker name="searchStart"></vaadin-date-picker>
-            </div>
-         </div>
-         <div class="layout horizontal">
-             <div class="flex">
-                 <div class="text">จนถึงวันที่ :</div> 
-             </div>
-            <div class="flex-3">
-                <vaadin-date-picker name="searchEnd"></vaadin-date-picker>
-            </div>
-         </div>
+         </template>
+         
+
+         
+
       </form>
      
      </div>
@@ -118,7 +134,24 @@
                 result: {
                     type: Object,
                     notify: true
-                }
+                },
+                searchInput:{
+                    type: Boolean,
+                    value: true
+                },
+                searchInputType:{
+                    type: Boolean,
+                    value: true
+                },
+                searchDataStart:{
+                    type: Boolean,
+                    value: false
+                },
+                searchDataEnd:{
+                    type: Boolean,
+                    value: false
+                },
+
             },
             listeners: {
                 'iron-form-submit': '_submitData',

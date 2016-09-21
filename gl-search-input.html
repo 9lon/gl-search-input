@@ -1,4 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-form/iron-form.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+
 
 <!--
 `gl-search-input`
@@ -8,27 +17,90 @@
 -->
 
 <dom-module id="gl-search-input">
-  <template>
-    <style>
-      :host {
-        display: block;
+    <template>
+    <style include="iron-flex iron-flex-factors">
+      .width{
+          width:100%;
+      }
+      .text{
+          border: 1px solid #000;
+          font-size:18px;
+          padding-top:20px;
+          height: 25px;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
-  </template>
+    <form is="iron-form" id="searchInput" method="get" >
+     <div class="layout vertical">
+         <div class="layout horizontal">
+             <div>
+                 <div class="text">ค้นหา</div> 
+             </div>
+            <div>
+                <paper-input label="ค้นหา" name="name" value="{{search}}" class="width">
+                    <iron-icon icon="search" prefix></iron-icon>
+                </paper-input>
+            </div>
+         </div>
+      
+        <div >
+          <paper-dropdown-menu label="ค้นหาตาม" name="searchType" class="width">
+            <paper-listbox class="dropdown-content" >
+              <template is="dom-repeat" items={{searchType}} as=item index-as=index>
+                <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
+              </template>
+           </paper-listbox>
+         </paper-dropdown-menu>
+        </div>
+     </div>
+    </form>
+    <button type="button" on-tap="_searchKey">แสดงรายงาน</button>
 
-  <script>
-    Polymer({
 
-      is: 'gl-search-input',
+    </template>
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'gl-search-input',
-        },
-      },
+    <script>
+        Polymer({
+            is: 'gl-search-input',
+            properties: {
+                
+                search: {
+                    type: String,
+                },
+                searchType: {
+                    type: Object,
+                    value: [{
+                        id: 1,
+                        name: 'allosaurus'
+                    }, {
+                        id: 2,
+                        name: 'brontosaurus'
+                    }, {
+                        id: 3,
+                        name: 'carcharodontosaurus'
+                    }, {
+                        id: 4,
+                        name: 'diplodocus'
+                    }, ]
+                },
+                result: {
+                    type: Object,
+                    notify: true
+                }
+            },
+            listeners: {
+                'iron-form-submit': '_submitData',
+            },
+            _searchKey:function (event) {
+                this.$.searchInput.submit();
+                // console.log(this.$.searchInput);
+                // Polymer.dom(event).localTarget.parentElement.submit();
+                // console.log(this.$.car.value);
+            },
+            _submitData:function (event) {
+                // console.log(JSON.stringify(event.detail));
+                console.log(this.result = event.detail);
+            }
 
-    });
-  </script>
+        });
+    </script>
 </dom-module>

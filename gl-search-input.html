@@ -70,7 +70,7 @@
             </template>
             
          
-         <template is="dom-if" if={{searchDataStart}}>
+         <template is="dom-if" if={{searchData}}>
              <div class="layout horizontal">
                 <div class="flex">
                     <div class="text">เริ่มจากวันที่ :</div> 
@@ -79,10 +79,7 @@
                     <vaadin-date-picker name="searchStart"></vaadin-date-picker>
                 </div>
             </div>
-         </template>
-         
-         <template is="dom-if" if={{searchDataEnd}}>
-             <div class="layout horizontal">
+            <div class="layout horizontal">
                 <div class="flex">
                     <div class="text">จนถึงวันที่ :</div> 
                 </div>
@@ -150,28 +147,20 @@
                     type: Boolean,
                     value: true
                 },
-                searchDataStart:{
+                searchData:{
                     type: Boolean,
                     value: false
-                },
-                searchDataEnd:{
-                    type: Boolean,
-                    value: false
-                },
-
+                }
             },
             listeners: {
                 'iron-form-submit': '_submitData',
             },
             _searchKey:function (event) {
                 this.$.searchInput.submit();
-                // console.log(this.$.searchInput);
-                // Polymer.dom(event).localTarget.parentElement.submit();
-                // console.log(this.$.car.value);
             },
             _submitData:function (event) {
                 // console.log(JSON.stringify(event.detail));
-                console.log(this.result = event.detail);
+                this.result = event.detail
             }
 
         });

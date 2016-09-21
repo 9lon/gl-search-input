@@ -1,38 +1,38 @@
 # \<gl-search-input\>
 
 
+gl-search-input for web components
 
-## Install the Polymer-CLI
+![alt text](http://i.imgur.com/oDFXoBX.png "gl-search-input")
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
-
-## Viewing Your Application
-
-```
-$ polymer serve
-```
-
-## Building Your Application
+## วิธีการติดตั้ง
 
 ```
-$ polymer build
+$ bower install 9lon-gl-search-input --save
 ```
+import ไฟล์gl-search-inputr ในหน้าที่่ต้องการใช้
+```
+ <link rel="import" href="bower_components/gl-search-input/gl-search-input.html">
+```
+มี 4 รูปแบบการค้นหาคือ
+1. ใส่ชื่อ
+2. ค้นหาตามประเภท
+3. ค้นหาจากวันเริ่มต้น
+4. ค้นหาถึงวันสุดท้าย
 
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
+โดยถ้าจะใช้อันนั้นก็ส่งชื่อ แอดทิบิวข้างล่างไป แล้วส่งไปว่า true หรือ false
+```
+searchInput
+searchInputType
+searchData
+```
+true = ใช้ , false = ไม่ใช่งาน
 
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
+esult 
+
+## วิธีการใช้งาน
 
 ```
-$ polymer serve build/bundled
+<gl-search-input result="{{result}}" search-data="true"></gl-search-input>
 ```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+โดยค่าที่คืนกลับมาจะอยู่ในแอดทิบิวชื่อว่า result 

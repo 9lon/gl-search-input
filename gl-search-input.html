@@ -42,10 +42,10 @@
             <template is="dom-if" if={{searchInput}}>
                 <div class="layout horizontal">
                     <div class="flex">
-                        <div class="text">ค้นหา :</div> 
+                        <div class="text">{{searchLabelName}} :</div> 
                     </div>
                     <div class="flex-3">
-                        <paper-input label="ค้นหา" name="searchName" value="{{search}}" class="width">
+                        <paper-input label="{{searchLabelName}}" name="searchName" value="{{search}}" class="width">
                             <!--<iron-icon icon="search" suffix></iron-icon>-->
                         </paper-input>
                     </div>
@@ -55,10 +55,10 @@
             <template is="dom-if" if={{searchInputType}}>
                 <div class="layout horizontal">
                     <div class="flex">
-                        <div class="text">ค้นหาตาม :</div> 
+                        <div class="text">{{searchLabelType}} :</div> 
                     </div>
                     <div class="flex-3">
-                        <paper-dropdown-menu label="ค้นหาตาม" name="searchType" class="width">
+                        <paper-dropdown-menu label="{{searchLabelType}}" name="searchType" class="width">
                             <paper-listbox class="dropdown-content" >
                                 <template is="dom-repeat" items={{searchType}} as=item index-as=index>
                                     <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
@@ -111,7 +111,14 @@
         Polymer({
             is: 'gl-search-input',
             properties: {
-                
+                searchLabelName:{
+                    type: String,
+                    value:'ค้นหา'
+                },
+                searchLabelType:{
+                    type: String,
+                    value:'ค้นหาตาม'
+                },
                 search: {
                     type: String,
                 },

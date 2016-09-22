@@ -57,7 +57,7 @@
                                     <div class="text">{{searchLabelName}} :</div>
                                 </div>
                                 <div class="flex-2">
-                                    <paper-input label="{{searchLabelName}}" name="searchName" value="{{search}}" class="width">
+                                    <paper-input label="{{searchLabelName}}"  no-label-float name="searchName" value="{{search}}" class="width">
                                         <!--<iron-icon icon="search" suffix></iron-icon>-->
                                     </paper-input>
                                 </div>
@@ -71,7 +71,7 @@
                                     <div class="text">{{searchLabelType}} :</div>
                                 </div>
                                 <div class="flex-2">
-                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType" class="width">
+                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType" class="width" no-label-float>
                                         <paper-listbox class="dropdown-content">
                                             <template is="dom-repeat" items={{searchType}} as=item index-as=index>
                                                 <paper-item value="{{item.name}}">{{item.name}} </paper-item>
@@ -89,7 +89,7 @@
                                     <div class="text">{{searchLabelType2}} :</div>
                                 </div>
                                 <div class="flex-2">
-                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType2" class="width">
+                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType2" class="width" no-label-float>
                                         <paper-listbox class="dropdown-content">
                                             <template is="dom-repeat" items={{searchType2}} as=item index-as=index>
                                                 <paper-item value="{{item.name}}">{{item.name}} </paper-item>

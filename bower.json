@@ -1,9 +1,10 @@
 {
   "name": "gl-search-input",
   "main": "gl-search-input.html",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "authors": [
-    "tonsai-j <tonsai.j@nexts-corp.com>"
+    "tonsai-j <tonsai.j@nexts-corp.com>",
+    "Nutthawut-Ice <nutthawut.l@nexts-corp.com>"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",

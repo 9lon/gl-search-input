@@ -9,6 +9,8 @@
 <link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../gl-styles/gl-color.html">
+<link rel="import" href="../gl-grid/gl-grid-row.html">
+<link rel="import" href="../gl-grid/gl-grid-col.html">
 
 
 
@@ -51,83 +53,60 @@
 
         <div class="layout vertical">
             <form is="iron-form" id="searchInput" method="get">
-                <div class="layout horizontal">
-                    <template is="dom-if" if={{searchInput}}>
-                        <div class="flex">
-                            <div class="layout horizontal">
-                                <div class="flex">
-                                    <div class="text">{{searchLabelName}} :</div>
-                                </div>
-                                <div class="flex-2">
-                                    <paper-input label="{{searchLabelName}}"  no-label-float name="searchName" value="{{search}}" class="width">
-                                        <!--<iron-icon icon="search" suffix></iron-icon>-->
-                                    </paper-input>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                    <template is="dom-if" if={{searchInputType}}>
-                        <div class="flex">
-                            <div class="layout horizontal">
-                                <div class="flex">
-                                    <div class="text">{{searchLabelType}} :</div>
-                                </div>
-                                <div class="flex-2">
-                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType" class="width" no-label-float>
-                                        <paper-listbox class="dropdown-content">
-                                            <template is="dom-repeat" items={{searchType}} as=item index-as=index>
-                                                <paper-item value="{{item.name}}">{{item.name}} </paper-item>
-                                            </template>
-                                        </paper-listbox>
-                                    </paper-dropdown-menu>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                    <template is="dom-if" if={{searchInputType2}}>
-                        <div class="flex">
-                            <div class="layout horizontal">
-                                <div class="flex">
-                                    <div class="text">{{searchLabelType2}} :</div>
-                                </div>
-                                <div class="flex-2">
-                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType2" class="width" no-label-float>
-                                        <paper-listbox class="dropdown-content">
-                                            <template is="dom-repeat" items={{searchType2}} as=item index-as=index>
-                                                <paper-item value="{{item.name}}">{{item.name}} </paper-item>
-                                            </template>
-                                        </paper-listbox>
-                                    </paper-dropdown-menu>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-                <div class="layout horizontal">
-                    <template is="dom-if" if={{searchData}}>
-                        <div class="flex">
+                
+                
+                <gl-grid-row width="{{getWidth}}">                    
 
-                            <div class="layout horizontal">
-                                <div class="flex">
-                                    <div class="text text2">เริ่มจากวันที่ :</div>
-                                </div>
-                                <div class="flex-2">
-                                    <vaadin-date-picker name="searchStart" class="width"></vaadin-date-picker>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <div class="layout horizontal">
-                                <div class="flex">
-                                    <div class="text text2">จนถึงวันที่ :</div>
-                                </div>
-                                <div class="flex-2">
-                                    <vaadin-date-picker name="searchEnd" class="width"></vaadin-date-picker>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                </div>
+                    <div class="text">{{searchLabelName}} :</div>    
+
+                    <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
+                        <paper-input label="{{searchLabelName}}"  no-label-float name="searchName" value="{{search}}" class="width">
+                    </gl-grid-col>
+                    
+                    <div class="text">{{searchLabelType}} :</div>
+                    
+                    <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
+                        <paper-dropdown-menu label="ทั้งหมด" name="searchType" class="width" no-label-float>
+                            <paper-listbox class="dropdown-content">
+                                <template is="dom-repeat" items={{searchType}} as=item index-as=index>
+                                    <paper-item value="{{item.name}}">{{item.name}} </paper-item>
+                                </template>
+                             </paper-listbox>
+                        </paper-dropdown-menu>
+                    </gl-grid-col>
+                    
+                    <div class="text">{{searchLabelType2}} :</div>
+                    
+                    <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
+                        <paper-dropdown-menu label="ทั้งหมด" name="searchType2" class="width" no-label-float>
+                            <paper-listbox class="dropdown-content">
+                                <template is="dom-repeat" items={{searchType2}} as=item index-as=index>
+                                    <paper-item value="{{item.name}}">{{item.name}} </paper-item>
+                                </template>
+                             </paper-listbox>
+                        </paper-dropdown-menu>
+                    </gl-grid-col>
+                </gl-grid-row>
+                
+                <template is="dom-if" if={{searchData}}>
+                    <gl-grid-row>
+
+                        <div class="text text2">เริ่มจากวันที่ :</div>
+                        
+                        <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
+                            <vaadin-date-picker name="searchStart" class="width"></vaadin-date-picker>
+                        </gl-grid-col>
+                        
+                        <div class="text text2">จนถึงวันที่ :</div>
+                        
+                        <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
+                            <vaadin-date-picker name="searchEnd" class="width"></vaadin-date-picker>
+                        </gl-grid-col>
+
+                    </gl-grid-row>
+                </template>
+                
+
             </form>
         </div>
 

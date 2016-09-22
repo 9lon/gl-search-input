@@ -34,4 +34,16 @@ true = ใช้ , false = ไม่ใช่งาน
 ```
 <gl-search-input result="{{result}}" search-data="true"></gl-search-input>
 ```
-โดยค่าที่คืนกลับมาจะอยู่ในแอดทิบิวชื่อว่า result 
+โดยค่าที่คืนกลับมาจะอยู่ในแอดทิบิวชื่อว่า result โดยจะต้องประกาศตัวแปรในการรับดังนี้
+```
+properties: {
+          result: {
+                    type: Object,
+                    observer: '_result'
+                 }
+},
+_result:function () {
+    this.result;
+},
+```
+เท่าที่ก็สามารถใช้งาน result ได้แล้ว

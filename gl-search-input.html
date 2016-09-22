@@ -50,8 +50,8 @@
         <div class="layout vertical">
             <form is="iron-form" id="searchInput" method="get">
                 <div class="layout horizontal">
-                    <div class="flex">
-                        <template is="dom-if" if={{searchInput}}>
+                    <template is="dom-if" if={{searchInput}}>
+                        <div class="flex">
                             <div class="layout horizontal">
                                 <div class="flex">
                                     <div class="text">{{searchLabelName}} :</div>
@@ -62,10 +62,10 @@
                                     </paper-input>
                                 </div>
                             </div>
-                        </template>
-                    </div>
-                    <div class="flex">
-                        <template is="dom-if" if={{searchInputType}}>
+                        </div>
+                    </template>
+                    <template is="dom-if" if={{searchInputType}}>
+                        <div class="flex">
                             <div class="layout horizontal">
                                 <div class="flex">
                                     <div class="text">{{searchLabelType}} :</div>
@@ -80,8 +80,8 @@
                                     </paper-dropdown-menu>
                                 </div>
                             </div>
-                        </template>
-                    </div>
+                        </div>
+                    </template>
                 </div>
                 <div class="layout horizontal">
                     <template is="dom-if" if={{searchData}}>
@@ -156,11 +156,11 @@
                 },
                 searchInput:{
                     type: Boolean,
-                    value: true
+                    value: false
                 },
                 searchInputType:{
                     type: Boolean,
-                    value: true
+                    value: false
                 },
                 searchData:{
                     type: Boolean,

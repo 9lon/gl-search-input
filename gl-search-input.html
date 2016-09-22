@@ -22,84 +22,99 @@
 
 <dom-module id="gl-search-input">
     <template>
-    <style include="iron-flex iron-flex-alignment iron-flex-factors gl-color">
-      .width{
-          width:100%;
-      }
-      .text{
-          /*border: 1px solid #000;*/
-          font-size:16px;
-          padding-top:31px;
-          /*height: 25px;*/
-      }
-      .button {
-          margin:15px;
-      }
-    </style>
-    
-     <div class="layout vertical">
-         <form is="iron-form" id="searchInput" method="get" >
-            <template is="dom-if" if={{searchInput}}>
+        <style include="iron-flex iron-flex-alignment iron-flex-factors gl-color">
+            :host {
+                --gl-inout-width: 100%;
+            }
+            
+            .width {
+                width: var(--gl-inout-width);
+            }
+            
+            .text {
+                text-align: right;
+                margin: 0px 4px 0px 4px;
+                font-size: 16px;
+                padding-top: 31px;
+            }
+            
+            .button {
+                margin: 15px;
+            }
+            
+            .bd {
+                border: 1px solid #000;
+            }
+        </style>
+
+        <div class="layout vertical">
+            <form is="iron-form" id="searchInput" method="get">
                 <div class="layout horizontal">
                     <div class="flex">
-                        <div class="text">{{searchLabelName}} :</div> 
+                        <template is="dom-if" if={{searchInput}}>
+                            <div class="layout horizontal">
+                                <div class="flex">
+                                    <div class="text">{{searchLabelName}} :</div>
+                                </div>
+                                <div class="flex-3">
+                                    <paper-input label="{{searchLabelName}}" name="searchName" value="{{search}}" class="width">
+                                        <!--<iron-icon icon="search" suffix></iron-icon>-->
+                                    </paper-input>
+                                </div>
+                            </div>
+                        </template>
                     </div>
-                    <div class="flex-3">
-                        <paper-input label="{{searchLabelName}}" name="searchName" value="{{search}}" class="width">
-                            <!--<iron-icon icon="search" suffix></iron-icon>-->
-                        </paper-input>
-                    </div>
-                </div>
-            </template>
-            
-            <template is="dom-if" if={{searchInputType}}>
-                <div class="layout horizontal">
                     <div class="flex">
-                        <div class="text">{{searchLabelType}} :</div> 
+                        <template is="dom-if" if={{searchInputType}}>
+                            <div class="layout horizontal">
+                                <div class="flex">
+                                    <div class="text">{{searchLabelType}} :</div>
+                                </div>
+                                <div class="flex-3">
+                                    <paper-dropdown-menu label="ทั้งหมด" name="searchType" class="width">
+                                        <paper-listbox class="dropdown-content">
+                                            <template is="dom-repeat" items={{searchType}} as=item index-as=index>
+                                                <paper-item value="{{item.name}}">{{item.name}} </paper-item>
+                                            </template>
+                                        </paper-listbox>
+                                    </paper-dropdown-menu>
+                                </div>
+                            </div>
+                        </template>
                     </div>
-                    <div class="flex-3">
-                        <paper-dropdown-menu label="ทั้งหมด" name="searchType" class="width">
-                            <paper-listbox class="dropdown-content" >
-                                <template is="dom-repeat" items={{searchType}} as=item index-as=index>
-                                    <paper-item value="{{item.name}}" >{{item.name}} </paper-item>
-                                </template>
-                            </paper-listbox>
-                        </paper-dropdown-menu>
-                    </div>
                 </div>
-            </template>
-            
-         
-         <template is="dom-if" if={{searchData}}>
-             <div class="layout horizontal">
-                <div class="flex">
-                    <div class="text">เริ่มจากวันที่ :</div> 
-                </div>
-                <div class="flex-3">
-                    <vaadin-date-picker name="searchStart"></vaadin-date-picker>
-                </div>
-            </div>
-            <div class="layout horizontal">
-                <div class="flex">
-                    <div class="text">จนถึงวันที่ :</div> 
-                </div>
-                <div class="flex-3">
-                    <vaadin-date-picker name="searchEnd"></vaadin-date-picker>
-                </div>
-            </div>
-         </template>
-         
+                <div class="layout horizontal">
+                    <template is="dom-if" if={{searchData}}>
+                        <div class="flex">
 
-         
+                            <div class="layout horizontal">
+                                <div class="flex">
+                                    <div class="text">เริ่มจากวันที่ :</div>
+                                </div>
+                                <div class="flex-3">
+                                    <vaadin-date-picker name="searchStart" class="width"></vaadin-date-picker>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="layout horizontal">
+                                <div class="flex">
+                                    <div class="text">จนถึงวันที่ :</div>
+                                </div>
+                                <div class="flex-3">
+                                    <vaadin-date-picker name="searchEnd" class="width"></vaadin-date-picker>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </form>
+        </div>
 
-      </form>
-     
-     </div>
-   
-     <div class="horizontal center-justified layout button">
-           <paper-button raised on-tap="_searchKey" class="gl-btn-info">ค้นหา</paper-button>
-      </div>
-   
+        <div class="horizontal center-justified layout button">
+            <paper-button raised on-tap="_searchKey" class="gl-btn-info">ค้นหา</paper-button>
+        </div>
+
 
 
     </template>

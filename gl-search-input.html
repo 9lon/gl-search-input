@@ -34,11 +34,12 @@
             
             .width {
                 width: var(--gl-inout-width);
+                margin:20px 0px 0px 0px;
             }
             
             .text {
                 text-align: right;
-                margin: 0px 4px 0px 4px;
+                margin: 20px 4px 0px 4px;
                 font-size: 16px;
                 padding-top: 10px;
             }
@@ -63,7 +64,7 @@
                             <div class="text">{{searchLabelName}} :</div>    
 
                             <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
-                                <gl-form-input label="{{searchLabelName}}"  no-label-float name="searchName" value="{{search}}" class="width"></gl-form-input>
+                                <gl-form-input format-number="off" rlabel="{{searchLabelName}}"  no-label-float name="searchName" value="{{search}}" class="width"></gl-form-input>
                             </gl-grid-col>
                         </template>
 

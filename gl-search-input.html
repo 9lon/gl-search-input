@@ -29,14 +29,16 @@
     <template>
         <style include="iron-flex iron-flex-alignment iron-flex-factors gl-color">
             :host {
-                --gl-inout-width: 100%;
+                --gl-input-width: 100%;
             }
             
             .width {
-                width: var(--gl-inout-width);
+                width: var(--gl-input-width);
                 margin:20px 0px 0px 0px;
             }
-            
+            .width2 {
+               margin:0px;             
+            }
             .text {
                 text-align: right;
                 margin: 20px 4px 0px 4px;
@@ -44,7 +46,10 @@
                 padding-top: 10px;
             }
             .text2 {
-                padding-top: 31px;
+                /*padding-top: 31px;*/
+            }
+            .floated-label-placeholder{
+                margin-top:-20px;
             }
             .button {
                 margin: 15px;
@@ -104,13 +109,13 @@
                         <div class="text text2">เริ่มจากวันที่ :</div>
                         
                         <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
-                            <vaadin-date-picker name="searchStart" class="width"></vaadin-date-picker>
+                            <vaadin-date-picker name="searchStart" no-label-float class="width width2"></vaadin-date-picker>
                         </gl-grid-col>
                         
                         <div class="text text2">จนถึงวันที่ :</div>
                         
                         <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
-                            <vaadin-date-picker name="searchEnd" class="width"></vaadin-date-picker>
+                            <vaadin-date-picker name="searchEnd" no-label-float class="width width2"></vaadin-date-picker>
                         </gl-grid-col>
 
                     </gl-grid-row>

@@ -40,7 +40,7 @@
             .text {
                 text-align: right;
                 margin: 20px 4px 0px 4px;
-                font-size: 16px;
+                font-size: 18px;
                 padding-top: 10px;
             }
             .text2 {
@@ -64,7 +64,7 @@
                             <div class="text">{{searchLabelName}} :</div>    
 
                             <gl-grid-col width="[[getWidth]]" grid="[[500,3]]">
-                                <gl-form-input format-number="off" rlabel="{{searchLabelName}}"  no-label-float name="searchName" value="{{search}}" class="width"></gl-form-input>
+                                <gl-form-input  label="{{searchLabelName}}"  no-label-float id="searchName" name="searchName" value="{{search}}" class="width"></gl-form-input>
                             </gl-grid-col>
                         </template>
 
@@ -207,7 +207,8 @@
             },
             _submitData:function (event) {
                 // console.log(JSON.stringify(event.detail));
-                this.result = event.detail
+               this.result = event.detail
+               console.log(this.result);
             }
 
         });
